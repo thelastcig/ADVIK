@@ -1,0 +1,274 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WISDOMTRIBES EDUCARE PRIVATE LIMITED</title>
+  <meta name="keywords" content="best online and offline Tuition" />
+  <meta name="description" content="" />
+  <meta name="business name " content=" WISDOMTRIBES EDUCARE PRIVATE LIMITED " />
+  <link href="static/image/icon.png" rel="icon" />
+
+    <!-- google fonts cdn link  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{%static 'new/style.css' %}">
+
+</head>
+
+<style>
+
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+    body{
+        width:100% !important;
+        
+    }
+    .logo img{
+        height:40px;
+    }
+
+    #sform{
+        width:max-content;
+        height:auto;
+       
+        
+        padding:2px;
+        font-size:20px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight:400;
+        color:#000;
+        
+    }
+    #query{
+       
+        width:300px;
+        height:auto;
+        border:1px solid yellow;
+        border-radius:5px;
+        padding:10px;
+        font-size:20px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight:400;
+        color:#000;
+    }
+    .home h1{
+        font-size: 6rem;
+        background: linear-gradient(
+            to right, #f32170, #ff6b08,
+             #cf23cf, #eedd44);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+    }
+    header{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        top:0; left: 0;
+        z-index: 1000;
+        padding: 0.5rem 7%;
+        background:var(--gradient);
+        border-bottom: #111 1px solid;
+        box-shadow: 0 .1rem .3rem rgba(0, 0, 0, 0.712);
+    }
+</style>
+<body>
+   
+<!-- header section starts  -->
+
+
+{% include 'sidebar3.html' %}
+ {% comment %} <header>
+
+    <div id="menu" class="fas fa-bars"></div>
+
+    <a href="#" class="logo">
+        <img id = "nlogo" src = " {% static 'image/logo.png' %}">
+       
+    </a>
+
+     <nav class="navbar">
+        <ul>
+            <li><a class="active" href="#home">home</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#course">course</a></li>
+            <li><a href="#teacher">teacher</a></li>
+            <li><a href="#contact">contact</a></li>
+        </ul>
+    </nav> 
+
+    <div id="login" class="fas fa-user-circle"></div>
+
+</header>  {% endcomment %}
+
+<!-- header section ends -->
+
+<!-- login form  -->
+
+
+
+<!-- home section starts  -->
+
+
+<section class="home" id="home" style="background:url({% static 'image\1.jpg' %}) no-repeat; background-size: cover;
+background-position: center;
+background-attachment: fixed;">
+
+    <h1>WISDOM TRIBES </h1>
+    <p>Live Online Tuition With Personal Tutors In CBSE, ICSE, Languages, Hobbies & More .</p>
+    {% comment %} <a href="#"><button class="btn">get started</button></a> {% endcomment %}
+
+    <form id="sform" action="/find_teachers" method="POST"> 
+        {% csrf_token %}
+        <input type="search" id="query" name="subject" placeholder="Search...">
+        <select name="learningMode" id="learningMode">
+            <option value="offline">Offline</option>
+            <option value="Online">Online</option>
+        </select>
+        <input type="text" id="zipCode" name="zipCode" placeholder="Please input your current ZIPCODE for serving the best results"/>
+        <button class= " btn" type="submit">Search</button>
+    </form>
+
+    {% comment %} <div class="shape" style=" background:url({% static 'new/images/shape.png ' %});"></div> {% endcomment %}
+
+</section>
+<div>
+    <div>
+        <div style="margin-left:40%;">
+            {% if teachers_list %}
+            <div>
+                {% for teacher in teachers_list %}
+                <form action="connected" method="POST">
+                    <h3>Name: {{teacher.firstname}} {{teacher.lastname}}</h3>
+                    <h3>Email: {{teacher.email}}</h3>
+                    <h3>Contact No: {{teacher.contactno}}</h3>
+                    <input type="hidden" name="teachersEmail" value="{{teacher.email}}" />
+                    {% csrf_token %}
+                    <button type="submit" class=" btn">Connect</button>
+                </form>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        
+    </div>
+</div>
+
+<!-- home section ends -->
+
+
+{% include 'course2.html' %}
+
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <div class="image">
+        <img src="{%static 'image\online-class.jpg' %}" alt="">
+    </div>
+
+    <div class="whycontent">
+        <h3>why choose us?</h3>
+        <p>Hire the Tutors, Trainers & Training Institutes! Wisdomtribes helps users to find & hire best tutors, trainers and training institutes quickly to meet their learning requirements at the right price. Whether you are looking for an experienced tutor to learn guitar, dance etc etc , a trainer to learn a new programming language or someone who can help you learn a foreign language.</p>
+        <p>we have got the best selection of tutors, trainers and training institutes for you. We empower you to hire the right tutors, trainers or training institutes within your budget and at your preferred location in off-line or online mode! For Tutors & Institutes .</p>
+        <a href="/about"><button class="btn">learn more</button></a>
+    </div>
+
+</section>
+
+<!-- about section ends -->
+
+
+<!-- course section starts  -->
+
+
+
+<!-- course section ends -->
+
+<!-- teacher section starts  -->
+
+<section class="teacher" id="teacher"  style = " background:url( {%static 'new/images/teachers.jfif' %}) no-repeat;
+background-size: cover;
+background-position: bottom;">
+
+<h1 class="heading">our expert teachers</h1>
+
+<p>Widom tribes is one of the best tutor provider platform for teachers and students. Students can search teachers as per their need and teachers can earn money by teaching the students.</p>
+
+<a href="#"><button class="btn">learn more</button></a>
+
+</section>
+
+<!-- teacher section ends -->
+
+
+
+<!-- contact section starts  -->
+
+{% include 'contactsec.html' %}
+
+<!-- contact section ends -->
+
+<!-- footer section starts  -->
+
+
+
+{% include 'footer2.html' %}
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- jquery cdn link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="{%static 'new/script.js' %}"></script>
+
+<!-- <script>
+     var disable_options = false;
+     document.getElementById('learningMode').onchange = function () {
+     if(this.value === "Offline")
+     {
+     		document.getElementById('zipCode').setAttribute('disabled', false);
+     }
+     if(this.value === "Online")
+     {
+     		document.getElementById('zipCode').setAttribute('disabled', true);
+     }
+	  }  
+</script> -->
+
+</body>
+</html>

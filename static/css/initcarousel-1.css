@@ -1,0 +1,42 @@
+.product_slider .amazingcarousel-prev {
+	left: -30px;
+	top: 40%;
+	margin-left: -0px;
+	margin-top: 0px;
+	z-index: 3;
+}
+.product_slider .amazingcarousel-next {
+	right: -30px;
+	top: 40%;
+	margin-right: -0px;
+	margin-top: 0px;
+	z-index: 3;
+}
+.product_slider2 .amazingcarousel-prev {
+	left: -30px;
+	top: 40%;
+	margin-left: -0px;
+	margin-top: 0px;
+	z-index: 3;
+}
+.product_slider2 .amazingcarousel-next {
+	right: -30px;
+	top: 40%;
+	margin-right: -0px;
+	margin-top: 0px;
+	z-index: 3;
+}
+.product_slider3 .amazingcarousel-prev {
+	right: 0px;
+	top: 0%;
+	margin-left: -0px;
+	margin-top: -30px;
+	z-index: 3;
+}
+.product_slider3 .amazingcarousel-next {
+	right: -20px;
+	top: 0%;
+	margin-right: -0px;
+	margin-top: -30px;
+	z-index: 3;
+}
